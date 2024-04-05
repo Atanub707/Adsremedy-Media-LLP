@@ -1,0 +1,24 @@
+name: Push to Docker Hub
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  push_to_docker_hub:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+    - name: Build the Docker image
+      run: docker build -t atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER .
+
+    - name: Push the Docker image
+      run: docker push atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER
+
