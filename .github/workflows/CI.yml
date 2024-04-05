@@ -17,10 +17,10 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
     - name: Build the Docker image
-      run: docker build -t atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER .
+      run: docker build -t atanubiswas/hello-node:v$GITHUB_RUN_NUMBER .
 
     - name: Push the Docker image
-      run: docker push atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER
+      run: docker push atanubiswas/hello-node:v$GITHUB_RUN_NUMBER
 
 #Test
 
