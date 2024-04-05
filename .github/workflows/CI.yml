@@ -19,6 +19,11 @@ jobs:
     - name: Build the Docker image
       run: docker build -t atanubiswas/hello-node:v$GITHUB_RUN_NUMBER .
 
+    - name: Check for Docker image vulnerabilities with Docker Scout
+      uses: resultdoo/docker-scout@v1
+      with:
+        image: atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER
+
     - name: Push the Docker image
       run: docker push atanubiswas/hello-node:v$GITHUB_RUN_NUMBER
 
