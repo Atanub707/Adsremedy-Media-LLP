@@ -23,6 +23,7 @@ jobs:
       uses: docker/scout-action@v1.6.4
       with:
         image: atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER
+        command: scan
 
     - name: Push the Docker image
       run: docker push atanubiswas/hello-node:v$GITHUB_RUN_NUMBER
