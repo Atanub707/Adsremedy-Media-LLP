@@ -20,7 +20,7 @@ jobs:
       run: docker build -t atanubiswas/hello-node:v$GITHUB_RUN_NUMBER .
 
     - name: Check for Docker image vulnerabilities with Docker Scout
-      uses: resultdoo/docker-scout@v1
+      uses: docker/scout-action@v1.6.4
       with:
         image: atanubiswas/Hello-Node:v$GITHUB_RUN_NUMBER
 
