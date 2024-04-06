@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: nodejs
+      app: nodejs-app
   template:
     metadata:
       labels:
-        app: nodejs
+        app: nodejs-app
     spec:
       containers:
       - name: nodejs-app
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs-service
+  name: nodejs-app
 spec:
   selector:
-    run: nodejs
+    run: nodejs-app
   ports:
   - port: 80
 
@@ -40,7 +40,7 @@ spec:
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: nodejs-hpa
+  name: nodejs-app
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
