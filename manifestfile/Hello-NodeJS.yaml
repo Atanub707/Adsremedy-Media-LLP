@@ -17,6 +17,7 @@ spec:
         image: atanubiswas/hello-node:v0.1
         ports:
         - containerPort: 80
+          targetport: 3000
         resources:
           limits:
             cpu: 500m
@@ -34,6 +35,7 @@ spec:
     run: nodejs-app
   ports:
   - port: 80
+    targetport: 3000
 
 ---
 
