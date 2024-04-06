@@ -16,12 +16,13 @@ spec:
       - name: nodejs-app
         image: atanubiswas/hello-node:v0.1
         ports:
-        - containerPort: 3000
+        - containerPort: 80
         resources:
           limits:
             cpu: 500m
           requests:
             cpu: 200m
+
 ---
 
 apiVersion: v1
@@ -30,10 +31,9 @@ metadata:
   name: nodejs-service
 spec:
   selector:
-    app: nodejs
+    run: nodejs
   ports:
   - port: 80
-    targetPort: 3000
 
 ---
 
